@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "Easy",
+        "description": "ShortURL is easy and fast, enter the long link to get your shortened link",
+        "icon": "/images/icon-like.png"
+    },
+    {
+        "id": 2,
+        "title": "Shortened",
+        "description": "Use any link, no matter what size, ShortURL always shortens",
+        "icon": "/images/icon-url.png"
+    },
+    {
+        "id": 3,
+        "title": "Secure",
+        "description": "It is fast and secure, our service have HTTPS protocol and data encryption",
+        "icon": "/images/icon-secure.png"
+    },
+    {
+        "id": 4,
+        "title": "Statistics",
+        "description": "Check the amount of clicks that your shortened url received",
+        "icon": "/images/icon-statistics.png"
+    },
+    {
+        "id": 5,
+        "title": "Reliable",
+        "description": "All links that try to disseminate spam, viruses and malware are deleted",
+        "icon": "/images/icon-unique.png"
+    },
+    {
+        "id": 6,
+        "title": "Devices",
+        "description": "Compatible with smartphones, tablets and desktop",
+        "icon": "/images/icon-responsive.png"
+    }
+]
