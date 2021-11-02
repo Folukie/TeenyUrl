@@ -21,7 +21,7 @@ export default function Home() {
   const copyToClipBoard = async (copyMe) => {
     try {
       await navigator.clipboard.writeText(copyMe);
-      setCopySuccess("Copied!");
+      setCopySuccess("URL Copied!");
     } catch (err) {
       setCopySuccess("Failed to copy!");
     }
@@ -50,10 +50,10 @@ export default function Home() {
             </h5>
             <div>
               <button
-                onClick={(setUrl) =>
-                  copyToClipBoard(setUrl)
+                onClick={() =>
+                  copyToClipBoard(url)
                 }
-                className="mt-4"
+                className="mt-4 bg-secondary-dark text-white p-2 rounded-md px-4 hover:bg-opacity-95"
               >
                 {copySuccess}
               </button>

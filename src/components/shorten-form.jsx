@@ -27,7 +27,7 @@ const ShortenForm = ({ onData }) => {
         onChange={handleChange}
       />
 
-      <button className="bg-primary-dark text-white h-14 text-lg p-4 font-bold flex items-center rounded-tr-md rounded-br-md">
+      <button className="bg-primary-dark text-white h-14 text-lg p-4 font-bold flex items-center rounded-tr-md rounded-br-md hover:bg-opacity-90">
         Shorten
       </button>
     </form>
