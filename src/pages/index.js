@@ -1,10 +1,32 @@
+import { data } from "autoprefixer";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import About from "../components/about.component";
+import ShortenForm from "../components/shorten-form";
 import Uses from "../components/uses.component";
+import { useState } from "react";
 
 export default function Home() {
+  const [url, setUrl] = useState();
+  const [showResult, setShowResult] = useState(false);
+
+  const handleData = (data) => {
+    setUrl(data);
+    setShowResult(true);
+  };
+  const [copySuccess, setCopySuccess] = useState("Click here to copy");
+
+  // your function to copy here
+
+  const copyToClipBoard = async (copyMe) => {
+    try {
+      await navigator.clipboard.writeText(copyMe);
+      setCopySuccess("Copied!");
+    } catch (err) {
+      setCopySuccess("Failed to copy!");
+    }
+  };
+
   return (
     <div className="text-center w-3/5 mx-auto sm:w-11/12">
       <Head>
@@ -16,11 +38,40 @@ export default function Home() {
         <h2 className="text-primary text-6xl font-bold">Teeny URL</h2>
       </header>
       <section className="bg-white shadow-sm py-6 sm:px-4">
-        <h4 className="text-4xl text-secondary font-bold mb-2">Paste the URL to shorten</h4>
-        <div className="flex mt-4 justify-center">
-          <input placeholder="Paste URL" className="border h-14 px-4 w-3/5 rounded-tl-md rounded-bl-md"/>
-          <button className="bg-primary-dark text-white h-14 text-lg p-4 font-bold flex items-center rounded-tr-md rounded-br-md">Shorten</button>
-        </div>
+        <h4 className="text-4xl text-secondary font-bold mb-2">
+          Paste the URL to shorten
+        </h4>
+        <ShortenForm onData={handleData} />
+        {showResult ? (
+          <div className="my-4">
+            <h2 className="text-base">Shortened Url:</h2>
+            <h5 id="result" className="text-secondary-dark text-xl">
+              {url}
+            </h5>
+            <div>
+              <button
+                onClick={(setUrl) =>
+                  copyToClipBoard(setUrl)
+                }
+                className="mt-4"
+              >
+                {copySuccess}
+              </button>
+            </div>
+
+            <h6
+              onClick={() => {
+                window.location.reload(false);
+              }}
+              className="cursor-pointer underline text-base my-6 text-primary"
+            >
+              Make another shortened URL
+            </h6>
+          </div>
+        ) : (
+          ""
+        )}
+
         <p className="py-4 text-base">
           TeenyUrl is a free tool to shorten a URL or reduce a link <br />
           Use our URL Shortener to create a shortened link making it easy to
@@ -35,7 +86,7 @@ export default function Home() {
         heading="Shorten, share and track"
         content="Your shortened URLs can be used in publications, documents, advertisements, blogs, forums, instant messages, and other locations. Track statistics for your business and projects by monitoring the number of hits from your URL with the click counter, you do not have to register."
       />
-      <Uses/>
+      <Uses />
     </div>
   );
 }
